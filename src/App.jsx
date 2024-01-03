@@ -1,37 +1,14 @@
 import "./App.css";
-
+import ClockHeading from "./components/ClockHeading";
+import ClockSlogan from "./components/ClockSlogan";
+import CurrentTime from "./components/CurrentTime";
 function App() {
   return (
-    <>
-      <button type="button" class="btn btn-primary">
-        Primary
-      </button>
-      <button type="button" class="btn btn-secondary">
-        Secondary
-      </button>
-      <button type="button" class="btn btn-success">
-        Success
-      </button>
-      <button type="button" class="btn btn-danger">
-        Danger
-      </button>
-      <button type="button" class="btn btn-warning">
-        Warning
-      </button>
-      <button type="button" class="btn btn-info">
-        Info
-      </button>
-      <button type="button" class="btn btn-light">
-        Light
-      </button>
-      <button type="button" class="btn btn-dark">
-        Dark
-      </button>
-
-      <button type="button" class="btn btn-link">
-        Link
-      </button>
-    </>
+    <center>
+      <ClockHeading></ClockHeading>
+      <ClockSlogan></ClockSlogan>
+      <CurrentTime></CurrentTime>
+    </center>
   );
 }
 
