@@ -1,37 +1,18 @@
 import "./App.css";
-
+import AppName from "./components/AppName";
+import AddTodo from "./components/AddTodo";
+import TodoItem1 from "./components/TodoItem1";
+import TodoItem2 from "./components/TodoItem2";
 function App() {
   return (
-    <>
-      <button type="button" class="btn btn-primary">
-        Primary
-      </button>
-      <button type="button" class="btn btn-secondary">
-        Secondary
-      </button>
-      <button type="button" class="btn btn-success">
-        Success
-      </button>
-      <button type="button" class="btn btn-danger">
-        Danger
-      </button>
-      <button type="button" class="btn btn-warning">
-        Warning
-      </button>
-      <button type="button" class="btn btn-info">
-        Info
-      </button>
-      <button type="button" class="btn btn-light">
-        Light
-      </button>
-      <button type="button" class="btn btn-dark">
-        Dark
-      </button>
-
-      <button type="button" class="btn btn-link">
-        Link
-      </button>
-    </>
+    <center className="todo-container">
+      <AppName />
+      <AddTodo />
+      <div className="items-container">
+        <TodoItem1></TodoItem1>
+        <TodoItem2></TodoItem2>
+      </div>
+    </center>
   );
 }
 
