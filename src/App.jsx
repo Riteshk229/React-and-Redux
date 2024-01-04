@@ -1,36 +1,37 @@
-import "./App.css";
-
+// import "./App.css";
+import Container from "./Conatiner";
+const buttonsName = [
+  "primary",
+  "secondary",
+  "success",
+  "danger",
+  "warning",
+  "info",
+  "light",
+  "dark",
+  "link",
+];
 function App() {
   return (
     <>
-      <button type="button" class="btn btn-primary">
-        Primary
-      </button>
-      <button type="button" class="btn btn-secondary">
-        Secondary
-      </button>
-      <button type="button" class="btn btn-success">
-        Success
-      </button>
-      <button type="button" class="btn btn-danger">
-        Danger
-      </button>
-      <button type="button" class="btn btn-warning">
-        Warning
-      </button>
-      <button type="button" class="btn btn-info">
-        Info
-      </button>
-      <button type="button" class="btn btn-light">
-        Light
-      </button>
-      <button type="button" class="btn btn-dark">
-        Dark
-      </button>
+      <Container>
+        {buttonsName.map((buttonName) => (
+          <button
+            style={{
+              padding: "5px",
+              margin: "5px",
+            }}
+            type="button"
+            className={`btn btn-${buttonName} text-capitalize`}
+          >
+            {buttonName}
+          </button>
+        ))}
+      </Container>
 
-      <button type="button" class="btn btn-link">
-        Link
-      </button>
+      <Container>
+        <p> Above are the buttons in BootStrap</p>
+      </Container>
     </>
   );
 }
