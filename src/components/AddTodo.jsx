@@ -1,49 +1,40 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { MdOutlineNoteAdd } from "react-icons/md";
 
 function AddTodo({ addTodo }) {
-  const [todoname, setTodoName] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  const todoNameElement = useRef();
+  const dueDateElement = useRef();
 
-  const handleNameChange = (e) => {
-    setTodoName(e.target.value);
-  };
-
-  const handleDateChange = (e) => {
-    setDueDate(e.target.value);
-  };
-
-  const handleAddBtnClick = () => {
-    if (todoname && dueDate) {
-      addTodo(todoname, dueDate);
+  const handleAddBtnClick = (e) => {
+    e.preventDefault();
+    const todoName = todoNameElement.current.value;
+    const dueDate = dueDateElement.current.value;
+    if (todoName && dueDate) {
+      addTodo(todoName, dueDate);
     }
-    setDueDate("");
-    setTodoName("");
+    todoNameElement.current.value = "";
+    dueDateElement.current.value = "";
   };
+
   return (
     <div className="container text-center">
-      <div className="row mRow">
+      <form onSubmit={handleAddBtnClick} className="row mRow">
         <div className="col-6">
           <input
             type="text"
+            ref={todoNameElement}
             placeholder="Enter Todo Here"
-            onChange={handleNameChange}
-            value={todoname}
           />
         </div>
         <div className="col-4">
-          <input type="date" onChange={handleDateChange} value={dueDate} />
+          <input type="date" ref={dueDateElement} />
         </div>
         <div className="col-2">
-          <button
-            type="button"
-            className="btn btn-success mButton"
-            onClick={handleAddBtnClick}
-          >
+          <button type="submit" className="btn btn-success mButton">
             <MdOutlineNoteAdd />
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
