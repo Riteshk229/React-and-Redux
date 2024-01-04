@@ -1,8 +1,10 @@
 // import "./App.css";
+import { useState } from "react";
 import Container from "./Conatiner";
 
 function App() {
-  const buttonsName = [
+  // const [textState, setTextState] = useState("");
+  const [buttons, setButtons] = useState([
     "primary",
     "secondary",
     "success",
@@ -12,22 +14,40 @@ function App() {
     "light",
     "dark",
     "link",
-  ];
+  ]);
 
   const handleCLick = (name, e) => {
     console.log(e);
     console.log(`${name.toUpperCase()} clicked..!!`);
   };
 
-  const handleChange = (e) => {
-    console.log(e.target.value);
+  // const handleChange = (e) => {
+  //   // console.log(e.target.value);
+  //   setTextState(e.target.value);
+  // };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      const newButton = e.target.value;
+      const newButtons = [...buttons, newButton];
+      setButtons(newButtons);
+      e.target.value = "";
+    }
   };
 
   return (
     <>
       <Container>
-        <input type="text" className="form-control" onChange={handleChange} />
-        {buttonsName.map((buttonName) => (
+        <input
+          type="text"
+          className="form-control"
+          // onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        />
+
+        {/* <p className="fw-bolder mt-2">{`Current Value of  TextState : ${textState}`}</p> */}
+
+        {buttons.map((buttonName) => (
           <button
             key={buttonName}
             style={{
