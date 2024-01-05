@@ -1,20 +1,26 @@
+import { useState } from "react";
 import "./App.css";
-import AppName from "./components/AppName";
-import AddTodo from "./components/AddTodo";
-import TodoItems from "./components/TodoItems";
-import WelcomeMessage from "./components/WelcomeMessage";
-import TodoItemsContextProvider from "./store/todoItemsStore";
+import CreatePost from "./components/CreatePost";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import PostList from "./components/PostList";
+import Sidebar from "./components/Sidebar";
 
 function App() {
+  const [selectedTab, setSelectedTab] = useState("Home");
   return (
-    <TodoItemsContextProvider>
-      <center className="todo-container">
-        <AppName />
-        <AddTodo />
-        <WelcomeMessage />
-        <TodoItems />
-      </center>
-    </TodoItemsContextProvider>
+    <div className="AppContainer">
+      <Sidebar selectedTab={selectedTab}></Sidebar>
+      <div className="content">
+        <Header></Header>
+        {selectedTab === "Home" ? (
+          <PostList></PostList>
+        ) : (
+          <CreatePost></CreatePost>
+        )}
+        <Footer></Footer>
+      </div>
+    </div>
   );
 }
 

@@ -5,15 +5,14 @@
   text-align: center;
 } */
 
-input {
+.AppContainer {
+  display: flex;
+}
+
+.content {
   width: 100%;
 }
 
-.mRow {
-  margin: 10px 5px;
-  padding: 5px;
-}
-
-.mButton {
-  min-width: 80px;
+.sidebar {
+  min-height: 600px;
 }
