@@ -1,6 +1,10 @@
 import styles from "./TodoItems.module.css";
 import TodoItem from "./TodoItem";
-const TodoItems = ({ todoItems, deleteTodo }) => {
+import { TodoItemsContext } from "../store/todoItemsStore";
+import { useContext } from "react";
+
+const TodoItems = () => {
+  const { todoItems } = useContext(TodoItemsContext);
   return (
     <div className={styles.itemsContainer}>
       {todoItems.map((item) => (
@@ -8,7 +12,6 @@ const TodoItems = ({ todoItems, deleteTodo }) => {
           key={item.name}
           todoName={item.name}
           todoDate={item.dueDate}
-          deleteTodo={deleteTodo}
         />
       ))}
     </div>

@@ -1,16 +1,18 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { MdOutlineNoteAdd } from "react-icons/md";
+import { TodoItemsContext } from "../store/todoItemsStore";
 
-function AddTodo({ addTodo }) {
+function AddTodo() {
   const todoNameElement = useRef();
   const dueDateElement = useRef();
+  const { addNewItem } = useContext(TodoItemsContext);
 
   const handleAddBtnClick = (e) => {
     e.preventDefault();
     const todoName = todoNameElement.current.value;
     const dueDate = dueDateElement.current.value;
     if (todoName && dueDate) {
-      addTodo(todoName, dueDate);
+      addNewItem(todoName, dueDate);
     }
     todoNameElement.current.value = "";
     dueDateElement.current.value = "";
