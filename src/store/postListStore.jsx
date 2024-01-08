@@ -4,7 +4,7 @@ export const PostListContext = createContext({
   postList: [],
   addPost: () => {},
   deletePost: () => {},
-  addInitalPosts: () => {},
+  addInitialPosts: () => {},
 });
 
 const postListReducer = (currentPostList, action) => {
@@ -24,7 +24,7 @@ const postListReducer = (currentPostList, action) => {
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
 
-  const addInitalPosts = (posts) => {
+  const addInitialPosts = (posts) => {
     dispatchPostList({
       type: "ADD_INITIAL_POSTS",
       payload: {
@@ -54,7 +54,7 @@ const PostListProvider = ({ children }) => {
   };
   return (
     <PostListContext.Provider
-      value={{ postList, addPost, deletePost, addInitalPosts }}
+      value={{ postList, addPost, deletePost, addInitialPosts }}
     >
       {children}
     </PostListContext.Provider>
